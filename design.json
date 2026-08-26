@@ -1,0 +1,18 @@
+{
+  "theme": {
+    "primary": "#8B5CF6",
+    "secondary": "#22D3EE",
+    "background": "#07070C",
+    "card": "#101019",
+    "text": "#FFFFFF",
+    "muted": "#9CA3AF"
+  },
+  "animations": {
+    "enabled": true,
+    "intensity": "medium"
+  },
+  "effects": {
+    "glow": true,
+    "cardHover": true
+  }
+}
