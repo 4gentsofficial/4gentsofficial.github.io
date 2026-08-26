@@ -1,11 +1,11 @@
 {
   "theme": {
-    "primary": "#FF00FF",
-    "secondary": "#00FFFF",
-    "background": "#050505",
-    "card": "#151515",
-    "text": "#FFFFFF",
-    "muted": "#AAAAAA"
+    "primary": "#ffffff",
+    "secondary": "#00ffff",
+    "background": "#00ff00",
+    "card": "#ff00ff",
+    "text": "#00ffff",
+    "muted": "#9CA3AF"
   },
   "animations": {
     "enabled": true,
