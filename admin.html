@@ -6,3 +6,55 @@
 <section class="admin-card"><div class="admin-toolbar"><h2>Your stories</h2><span id="count" class="muted"></span></div><div id="storyList" class="story-list"></div></section>
 <section class="admin-card how"><h2>How publishing works</h2><ol><li>Create or edit stories here.</li><li>Tap <b>Export news.json</b>. Your phone downloads the latest data file.</li><li>Open GitHub → <b>4gentsofficial/4gentsofficial.github.io</b>.</li><li>Tap <b>Add file → Upload files</b> and upload the new <b>news.json</b>.</li><li>Tap <b>Commit changes</b>. Wait about 1–2 minutes and refresh your website.</li></ol><p class="warning">This admin page does not contain a password and does not directly change GitHub. Your GitHub account remains the thing that controls what gets published.</p></section>
 </div></main><script src="admin.js"></script></body></html>
+<section class="design-panel">
+  <h2>🎨 Website Design</h2>
+
+  <label>Primary Color</label>
+  <input type="color" id="primaryColor" value="#8B5CF6">
+
+  <label>Secondary Color</label>
+  <input type="color" id="secondaryColor" value="#22D3EE">
+
+  <label>Background Color</label>
+  <input type="color" id="backgroundColor" value="#07070C">
+
+  <label>Card Color</label>
+  <input type="color" id="cardColor" value="#101019">
+
+  <label>Text Color</label>
+  <input type="color" id="textColor" value="#FFFFFF">
+
+  <label>Animations</label>
+  <select id="animations">
+    <option value="true">On</option>
+    <option value="false">Off</option>
+  </select>
+
+  <button onclick="saveDesign()">Save Design</button>
+</section>
+
+<script>
+async function saveDesign() {
+  const design = {
+    theme: {
+      primary: document.getElementById("primaryColor").value,
+      secondary: document.getElementById("secondaryColor").value,
+      background: document.getElementById("backgroundColor").value,
+      card: document.getElementById("cardColor").value,
+      text: document.getElementById("textColor").value
+    },
+    animations: {
+      enabled: document.getElementById("animations").value === "true",
+      intensity: "medium"
+    },
+    effects: {
+      glow: true,
+      cardHover: true
+    }
+  };
+
+  localStorage.setItem("4gentsDesign", JSON.stringify(design));
+
+  alert("Design saved on this phone!");
+}
+</script>
