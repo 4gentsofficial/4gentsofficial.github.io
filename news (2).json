@@ -1,0 +1,36 @@
+{
+  "site": {
+    "name": "4 GENTS",
+    "youtube": "https://youtube.com/@a.4gents"
+  },
+  "news": [
+    {
+      "id": "story-1787753629645",
+      "title": "Free Fire 0B 55 UPDATE",
+      "category": "Free Fire",
+      "tag": "NEWS",
+      "date": "26 AUG 2026",
+      "description": "New GUNS WERE ADDED IN THE GAME- Ex. SNIPER GUN [SEAGULL]",
+      "content": "Hi Guys AGENT HERE",
+      "image": "",
+      "featured": false
+    }
+  ],
+  "quickUpdates": [
+    {
+      "label": "Redeem Codes",
+      "text": "Only publish codes you have checked. Codes may expire or have redemption limits.",
+      "status": "NEW"
+    },
+    {
+      "label": "Events",
+      "text": "Add event dates, rewards and a source link when you publish an update.",
+      "status": "LIVE"
+    },
+    {
+      "label": "Esports",
+      "text": "Share match schedules, results and highlights with your readers.",
+      "status": "HOT"
+    }
+  ]
+}
