@@ -9,6 +9,8 @@
 <section class="design-panel">
   <h2>🎨 Website Design</h2>
 
+  <p>Customize your 4 GENTS website from your phone.</p>
+
   <label>Primary Color</label>
   <input type="color" id="primaryColor" value="#8B5CF6">
 
@@ -26,35 +28,78 @@
 
   <label>Animations</label>
   <select id="animations">
-    <option value="true">On</option>
-    <option value="false">Off</option>
+    <option value="true">ON</option>
+    <option value="false">OFF</option>
   </select>
 
-  <button onclick="saveDesign()">Save Design</button>
+  <label>Glow Effects</label>
+  <select id="glow">
+    <option value="true">ON</option>
+    <option value="false">OFF</option>
+  </select>
+
+  <button onclick="generateDesign()">
+    💾 Generate design.json
+  </button>
+
+  <button onclick="resetDesign()">
+    🔄 Reset
+  </button>
+
+  <textarea
+    id="designOutput"
+    readonly
+    placeholder="Your design.json will appear here">
+  </textarea>
 </section>
 
 <script>
-async function saveDesign() {
+function generateDesign() {
+
   const design = {
     theme: {
       primary: document.getElementById("primaryColor").value,
       secondary: document.getElementById("secondaryColor").value,
       background: document.getElementById("backgroundColor").value,
       card: document.getElementById("cardColor").value,
-      text: document.getElementById("textColor").value
+      text: document.getElementById("textColor").value,
+      muted: "#9CA3AF"
     },
+
     animations: {
-      enabled: document.getElementById("animations").value === "true",
+      enabled:
+        document.getElementById("animations").value === "true",
       intensity: "medium"
     },
+
     effects: {
-      glow: true,
+      glow:
+        document.getElementById("glow").value === "true",
       cardHover: true
     }
   };
 
-  localStorage.setItem("4gentsDesign", JSON.stringify(design));
+  const json = JSON.stringify(design, null, 2);
 
-  alert("Design saved on this phone!");
+  document.getElementById("designOutput").value = json;
+
+  navigator.clipboard.writeText(json).then(() => {
+    alert("Design generated and copied!");
+  });
+}
+
+function resetDesign() {
+
+  document.getElementById("primaryColor").value = "#8B5CF6";
+  document.getElementById("secondaryColor").value = "#22D3EE";
+  document.getElementById("backgroundColor").value = "#07070C";
+  document.getElementById("cardColor").value = "#101019";
+  document.getElementById("textColor").value = "#FFFFFF";
+
+  document.getElementById("animations").value = "true";
+  document.getElementById("glow").value = "true";
+
+  document.getElementById("designOutput").value = "";
+
 }
 </script>
