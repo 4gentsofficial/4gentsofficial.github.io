@@ -1,105 +1,49 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>4 GENTS Admin</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
-<body class="admin-page"><header class="header"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark">4</span><span>GENTS</span></a><a class="nav-cta" href="index.html">View website ↗</a></div></header>
-<main class="admin"><div class="container"><div class="admin-hero"><div class="eyebrow">4 GENTS / ADMIN</div><h1>Publish news without editing code.</h1><p>Create stories here, save them on your phone, then upload the exported <b>news.json</b> to GitHub. No paid software needed.</p></div>
-<section class="admin-card"><div class="admin-toolbar"><h2>News editor</h2><div class="toolbar-buttons"><button class="btn ghost" id="newBtn">New</button><button class="btn ghost" id="importBtn">Import news.json</button><button class="btn primary" id="exportBtn">Export news.json</button><input id="fileInput" type="file" accept="application/json" hidden></div></div>
-<div class="form-grid"><label>Title<input id="title" placeholder="Example: Free Fire OB update released"></label><label>Category<select id="category"><option>Free Fire</option><option>Gaming</option><option>Esports</option><option>Updates</option></select></label><label>Tag<input id="tag" placeholder="NEWS"></label><label>Date<input id="date" placeholder="26 AUG 2026"></label><label class="wide">Short description<textarea id="description" rows="3" placeholder="A short summary shown on the news card."></textarea></label><label class="wide">Full story<textarea id="content" rows="7" placeholder="Write the full article here."></textarea></label><label class="wide">Image URL (optional)<input id="image" placeholder="https://.../image.jpg"><small>Tip: you can leave this empty and the site will use its purple/blue design.</small></label><label class="check"><input id="featured" type="checkbox"> Feature this story</label></div><div class="form-actions"><button class="btn primary" id="saveBtn">Save story</button><button class="btn ghost" id="deleteBtn">Delete selected</button></div></section>
-<section class="admin-card"><div class="admin-toolbar"><h2>Your stories</h2><span id="count" class="muted"></span></div><div id="storyList" class="story-list"></div></section>
-<section class="admin-card how"><h2>How publishing works</h2><ol><li>Create or edit stories here.</li><li>Tap <b>Export news.json</b>. Your phone downloads the latest data file.</li><li>Open GitHub → <b>4gentsofficial/4gentsofficial.github.io</b>.</li><li>Tap <b>Add file → Upload files</b> and upload the new <b>news.json</b>.</li><li>Tap <b>Commit changes</b>. Wait about 1–2 minutes and refresh your website.</li></ol><p class="warning">This admin page does not contain a password and does not directly change GitHub. Your GitHub account remains the thing that controls what gets published.</p></section>
-</div></main><script src="admin.js"></script></body></html>
-<section class="design-panel">
-  <h2>🎨 Website Design</h2>
-
-  <p>Customize your 4 GENTS website from your phone.</p>
-
-  <label>Primary Color</label>
-  <input type="color" id="primaryColor" value="#8B5CF6">
-
-  <label>Secondary Color</label>
-  <input type="color" id="secondaryColor" value="#22D3EE">
-
-  <label>Background Color</label>
-  <input type="color" id="backgroundColor" value="#07070C">
-
-  <label>Card Color</label>
-  <input type="color" id="cardColor" value="#101019">
-
-  <label>Text Color</label>
-  <input type="color" id="textColor" value="#FFFFFF">
-
-  <label>Animations</label>
-  <select id="animations">
-    <option value="true">ON</option>
-    <option value="false">OFF</option>
-  </select>
-
-  <label>Glow Effects</label>
-  <select id="glow">
-    <option value="true">ON</option>
-    <option value="false">OFF</option>
-  </select>
-
-  <button onclick="generateDesign()">
-    💾 Generate design.json
-  </button>
-
-  <button onclick="resetDesign()">
-    🔄 Reset
-  </button>
-
-  <textarea
-    id="designOutput"
-    readonly
-    placeholder="Your design.json will appear here">
-  </textarea>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4 GENTS — Design Editor</title>
+<style>
+:root{--bg:#07070c;--card:#101019;--primary:#8b5cf6;--secondary:#22d3ee;--text:#fff;--muted:#9ca3af}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;padding:16px}
+.wrap{max-width:760px;margin:auto}.sub{color:var(--muted)}.panel{background:var(--card);border:1px solid #292936;border-radius:18px;padding:18px;margin:18px 0}
+h1{margin:0 0 6px}h2{margin-top:0}label{display:block;font-weight:bold;margin:15px 0 7px}
+input[type=color]{width:100%;height:54px;border:0;padding:0;border-radius:12px;background:transparent}
+select,button{width:100%;min-height:52px;border-radius:12px;padding:12px;font-size:16px;color:#fff;background:#191923;border:1px solid #333}
+button{background:var(--primary);border:0;font-weight:bold;margin-top:14px}.secondary{background:#22222e!important}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.status{margin-top:14px;padding:14px;border-radius:12px;background:#181821;color:var(--muted);line-height:1.5}
+@media(max-width:520px){.row{grid-template-columns:1fr}body{padding:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🎮 4 GENTS</h1><div class="sub">Phone-friendly Website Design Editor</div>
+<section class="panel">
+<h2>🎨 Website Design</h2>
+<label>Primary Color</label><input type="color" id="primaryColor" value="#8B5CF6">
+<label>Secondary Color</label><input type="color" id="secondaryColor" value="#22D3EE">
+<label>Background Color</label><input type="color" id="backgroundColor" value="#07070C">
+<label>Card Color</label><input type="color" id="cardColor" value="#101019">
+<label>Text Color</label><input type="color" id="textColor" value="#FFFFFF">
+<div class="row">
+<div><label>Animations</label><select id="animationEnabled"><option value="true">✨ On</option><option value="false">Off</option></select></div>
+<div><label>Glow Effect</label><select id="glowEnabled"><option value="true">🌟 On</option><option value="false">Off</option></select></div>
+</div>
+<button onclick="copyDesignJSON()">📋 Copy Design JSON</button>
+<button class="secondary" onclick="resetDesign()">🔄 Reset</button>
+<div id="status" class="status">Choose your colors, then tap <b>Copy Design JSON</b>.</div>
 </section>
-
+<section class="panel">
+<h2>📰 News Admin</h2>
+<div class="sub">Open your existing news editor.</div>
+<button onclick="location.href='admin.html'">📰 Open News Editor</button>
+</section>
+</div>
 <script>
-function generateDesign() {
-
-  const design = {
-    theme: {
-      primary: document.getElementById("primaryColor").value,
-      secondary: document.getElementById("secondaryColor").value,
-      background: document.getElementById("backgroundColor").value,
-      card: document.getElementById("cardColor").value,
-      text: document.getElementById("textColor").value,
-      muted: "#9CA3AF"
-    },
-
-    animations: {
-      enabled:
-        document.getElementById("animations").value === "true",
-      intensity: "medium"
-    },
-
-    effects: {
-      glow:
-        document.getElementById("glow").value === "true",
-      cardHover: true
-    }
-  };
-
-  const json = JSON.stringify(design, null, 2);
-
-  document.getElementById("designOutput").value = json;
-
-  navigator.clipboard.writeText(json).then(() => {
-    alert("Design generated and copied!");
-  });
-}
-
-function resetDesign() {
-
-  document.getElementById("primaryColor").value = "#8B5CF6";
-  document.getElementById("secondaryColor").value = "#22D3EE";
-  document.getElementById("backgroundColor").value = "#07070C";
-  document.getElementById("cardColor").value = "#101019";
-  document.getElementById("textColor").value = "#FFFFFF";
-
-  document.getElementById("animations").value = "true";
-  document.getElementById("glow").value = "true";
-
-  document.getElementById("designOutput").value = "";
-
-}
+function getDesign(){return{theme:{primary:primaryColor.value,secondary:secondaryColor.value,background:backgroundColor.value,card:cardColor.value,text:textColor.value,muted:"#9CA3AF"},animations:{enabled:animationEnabled.value==="true",intensity:"medium"},effects:{glow:glowEnabled.value==="true",cardHover:true}}}
+async function copyDesignJSON(){const json=JSON.stringify(getDesign(),null,2);try{await navigator.clipboard.writeText(json)}catch(e){const t=document.createElement("textarea");t.value=json;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}status.innerHTML="✅ <b>Copied!</b> Open GitHub → design.json → Edit → delete old JSON → paste → Commit changes."}
+function resetDesign(){primaryColor.value="#8B5CF6";secondaryColor.value="#22D3EE";backgroundColor.value="#07070C";cardColor.value="#101019";textColor.value="#FFFFFF";animationEnabled.value="true";glowEnabled.value="true";status.textContent="Design reset to the 4 GENTS default theme."}
 </script>
+</body>
+</html>
