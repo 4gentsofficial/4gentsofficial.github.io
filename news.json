@@ -1,0 +1,57 @@
+{
+  "site": {
+    "name": "4 GENTS",
+    "youtube": "https://youtube.com/@a.4gents"
+  },
+  "news": [
+    {
+      "id": "ff-redeem-20260826",
+      "category": "Free Fire",
+      "tag": "NEWS",
+      "date": "26 AUG 2026",
+      "title": "Free Fire MAX redeem codes: check today's rewards before they expire",
+      "description": "Codes can be time-limited and region-dependent. Always verify availability before publishing or using a code.",
+      "image": "",
+      "featured": true,
+      "content": "Check the official redemption information before sharing a code. Availability can change by region and codes may expire without notice."
+    },
+    {
+      "id": "ff-events-20260826",
+      "category": "Free Fire",
+      "tag": "EVENTS",
+      "date": "26 AUG 2026",
+      "title": "New events, rewards and challenges worth watching",
+      "description": "Keep your audience informed about the latest in-game activity.",
+      "image": "",
+      "featured": false,
+      "content": "Add the event schedule, rewards, requirements and official source before publishing the story."
+    },
+    {
+      "id": "ff-esports-20260826",
+      "category": "Esports",
+      "tag": "ESPORTS",
+      "date": "26 AUG 2026",
+      "title": "Competitive Free Fire: matches, teams and highlights",
+      "description": "A dedicated space for tournament and esports updates.",
+      "image": "",
+      "featured": false,
+      "content": "Cover match schedules, results, standout players and official tournament announcements."
+    },
+    {
+      "id": "gaming-updates",
+      "category": "Gaming",
+      "tag": "GAMING",
+      "date": "26 AUG 2026",
+      "title": "Big game updates and launches",
+      "description": "Replace this starter story with your next gaming update.",
+      "image": "",
+      "featured": false,
+      "content": "Write your gaming story here."
+    }
+  ],
+  "quickUpdates": [
+    {"label":"Redeem Codes","text":"Only publish codes you have checked. Codes may expire or have redemption limits.","status":"NEW"},
+    {"label":"Events","text":"Add event dates, rewards and a source link when you publish an update.","status":"LIVE"},
+    {"label":"Esports","text":"Share match schedules, results and highlights with your readers.","status":"HOT"}
+  ]
+}
